@@ -17,7 +17,8 @@
         <div class="product-container">
           <div class="product-image">
             <a v-bind:href="url">
-              <img v-bind:src="image" alt="Socks"/>
+              <img v-bind:src="image" alt="Socks"
+              :class="{'out-of-stock-img': !onStock}" />
             </a>
           </div>
           <div class="product-info">
@@ -34,11 +35,16 @@
             <br>
             <hr>
             <p>Available colors (to see product hover on option you like):</p>
-            <ol>
-              <li v-for="variant in variants" :key="variant.id" @mouseover="displayColor(variant.image)">{{ variant.color }}</li>
-            </ol>
-            <button class="button" @click="addToCart">Add to Cart</button>
-            <button class="button" @click="removeFromCart">Remove from Cart</button>
+            <div 
+              v-for="variant in variants" 
+              :key="variant.id" 
+              @mouseover="displayColor(variant.image)" 
+              class="color-circle"
+              :style="{backgroundColor: variant.color}"></div>
+            <button class="button" @click="addToCart"
+            :disabled="!onStock" :class="{disabledButton: !onStock}">Add to Cart</button>
+            <button class="button" @click="removeFromCart"
+            :disabled="!onStock" :class="{disabledButton: !onStock}">Remove from Cart</button>
           </div>
         </div>
       </div>
