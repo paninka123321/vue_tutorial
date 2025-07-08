@@ -7,6 +7,18 @@ const app = Vue.createApp({
         url: 'https://www.vuemastery.com/',
         onStock: true, // Adding an onStock property
         inventory: 8, // Adding an inventory property
+        details: ['50% cotton', '30% wool', '20% polyester'],
+        sizes: ['35-38', '39-42', '43-46'], // Adding a sizes property
+        variants: [
+            {
+                id: 2234,
+                color: 'green',
+            },
+            {
+                id: 2235,
+                color: 'blue',
+            }
+        ],
     }
 }
 });
